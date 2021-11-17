@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label>Número 1</label>
+        <input id="numero1" type="number">
+        <label>Número 2</label>
+        <input id="numero2" type="number">
+        <input type="submit" value="Sumar">
+    </form>
+    <script>
+        document.addEventListener("submit", enviarDatos)
+        function enviarDatos(e) {
+            e.preventDefault()
+            const a = document.querySelector("#numero1").value
+            const b = document.querySelector("#numero2").value
+            fetch("http://localhost:5000/suma", {
+                method : "POST",
+                headers : {
+                    "Accept" : "application/json",
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({
+                    a: parseInt(a),
+                    b: parseInt(b)
+                })
+            })
+            .then(respuesta => respuesta.json())
+            .then(data => {
+                const {result} = data
+                document.querySelector(".result").innerText = result
+            })
+            .catch(error => console.log(error))
+        }
+    </script>
+</body>
+</html>
