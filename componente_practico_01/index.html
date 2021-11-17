@@ -18,8 +18,8 @@
         document.addEventListener("submit", enviarDatos)
         function enviarDatos(e) {
             e.preventDefault()
-            const a = document.querySelector("#numero1").value
-            const b = document.querySelector("#numero2").value
+            const a = document.querySelector("#numero1").value // También funciona con document.getElementById("numero1").value
+            const b = document.querySelector("#numero2").value // También funciona con document.getElementById("numero1").value
             fetch("http://localhost:5000/suma", {
                 method : "POST",
                 headers : {
