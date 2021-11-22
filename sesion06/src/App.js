@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Prueba from './components/Prueba';
 import Saludo from './components/Saludar';
+import { Contador } from './components/Contador';
 
 function App() {
   const buenas = 'Este es otro saludo';
@@ -14,6 +15,7 @@ function App() {
         <Saludo msg={buenas} />
         <Saludo {...props} />
         <img src={logo} className="App-logo" alt="logo" />
+        <Contador />
         <Prueba />
         <p>
           Edit <code>src/App.js</code> and save to reload.
